@@ -5,7 +5,7 @@ const pug = require('pug');
 const app = express();
 app.set('view engine', 'pug');
 
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
    res.render('index')
   });
 
