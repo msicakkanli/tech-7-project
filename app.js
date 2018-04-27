@@ -2,7 +2,7 @@ const express = require('express');
 const config = require('./app/config');
 
 const app = express();
-let server = require('http').Server(app);
+let server = require('https').Server(app);
 var port = process.env.PORT || 8000
 
 app.get('/', (req, res) => {
