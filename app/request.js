@@ -16,13 +16,14 @@ function Friends(name, screen_name, image) {
 
 let finalFriends = []
 
-function Timeline(name, screen_name, twit, image , retweet, favorite) {
+function Timeline(name, screen_name, twit, image , retweet, favorite, time) {
     this.name = name;
     this.screen_name = screen_name;
     this.twit = twit;
     this.image = image;
     this.retweet = retweet;
     this.favorite = favorite;
+    this.time = time; 
 }
 
 let finalTimeline = []
@@ -37,7 +38,7 @@ T.get('friends/list', { screen_name: 'thedonuil' , count: 5 },  function (err, d
  
 T.get('statuses/home_timeline', { screen_name: 'thedonuil', count:5  }, function (err,data,response) {
     data.forEach(element => {
-        let timeline = new Timeline(element.user.name, element.user.screen_name, element.text ,element.user.profile_image_url, element.retweet_count, element.favourites_count)
+        let timeline = new Timeline(element.user.name, element.user.screen_name, element.text ,element.user.profile_image_url, element.retweet_count, element.favourites_count , element.created_at)
        finalTimeline.push(timeline);
     });
     return finalTimeline;
