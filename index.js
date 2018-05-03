@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-//const config = require('./app/config');
 const requests = require('./app/request.js');
 const pug = require('pug');
 
@@ -16,11 +15,17 @@ app.get('/', (req, res) => {
    res.render('layout')
   });
 
-app.listen(3000, () => {
-    console.log('The application is running on localhost:3000!')
-});
+
 
 app.get('/friends', ( req, res) => {
     res.send(requests.finalFriends);
+});
+
+app.get('/tweets', ( req, res) => {
+    res.send(requests.finalTimeline);
+});
+
+app.listen(3000, () => {
+    console.log('The application is running on localhost:3000!')
 });
 
