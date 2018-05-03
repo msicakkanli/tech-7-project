@@ -1,5 +1,3 @@
-
-//get json from /tweets and add tweets
 !function()  {
   $.getJSON('/friends', function (data) {
     $('.app--user--list').html('');
@@ -10,7 +8,7 @@
           <div class="circle--fluid">
             <div class="circle--fluid--cell circle--fluid--primary">
               <a class="app--tweet--author">
-                <img class="app--avatar" src="${data[i].profile_image_url}"/>
+                <img class="app--avatar" src="${data[i].image}"/>
                 <h4>${data[i].name}</h4>
                 <p>@${data[i].screen_name}</p>
               </a>
@@ -27,13 +25,13 @@
           <div class="circle--fluid">
             <div class="circle--fluid--cell circle--fluid--primary">
               <a class="app--tweet--author">
-                <img class="app--avatar" src="${data[i].profile_image_url}"/>
+                <img class="app--avatar" src="${data[i].image}"/>
                 <h4>${data[i].name}</h4>
                 <p>@${data[i].screen_name}</p>
               </a>
             </div>
             <div class="circle--fluid--cell">
-              <a class="button button">Follow</a>
+              <a class="button button">Unfollow</a>
             </div>
           </div>
         </li>
