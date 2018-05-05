@@ -1,3 +1,5 @@
+//import { request } from 'https';
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const requests = require('./app/request.js');
@@ -13,6 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
    res.render('layout')
+   
+   
   });
 
 
@@ -23,6 +27,15 @@ app.get('/friends', ( req, res) => {
 
 app.get('/tweets', ( req, res) => {
     res.send(requests.finalTimeline);
+});
+
+app.get('/messages', ( req, res) => {
+    res.send(requests.finalDm);
+});
+
+app.get('/profile', (req, res) => {
+    res.send(requests.finalProfile); 
+    
 });
 
 app.listen(3000, () => {
