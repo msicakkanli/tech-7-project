@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
    res.render('layout')
-   
-   
+
+
   });
 
 
@@ -34,11 +34,10 @@ app.get('/messages', ( req, res) => {
 });
 
 app.get('/profile', (req, res) => {
-    res.send(requests.finalProfile); 
-    
+    res.send(requests.finalProfile);
+
 });
 
-app.listen(3000, () => {
-    console.log('The application is running on localhost:3000!')
+app.listen(5000, () => {
+    console.log('The application is running on localhost:5000!')
 });
-

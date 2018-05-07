@@ -43,15 +43,16 @@ function Profile(name, image) {
 
 
 
-T.get('friends/list', { screen_name: 'thedonuil' , count:5 },  function (err, data, response) {
+T.get('friends/list', { count:5 },  function (err, data, response) {
    data.users.forEach(element => {
       let friends = new Friends(element.name, element.screen_name, element.profile_image_url)
        finalFriends.push(friends)
+       
    });
    return finalFriends;
   })
  
-T.get('statuses/home_timeline', { screen_name: 'thedonuil', count:5 }, function (err,data,response) {
+T.get('statuses/home_timeline', { count:5 }, function (err,data,response) {
     data.forEach(element => {
         let timeline = new Timeline(element.user.name, element.user.screen_name, element.text ,element.user.profile_image_url, element.retweet_count, element.user.favourites_count , element.created_at)
        finalTimeline.push(timeline);
@@ -59,7 +60,7 @@ T.get('statuses/home_timeline', { screen_name: 'thedonuil', count:5 }, function 
     return finalTimeline;
 })  
 
-T.get('direct_messages/sent',{ screen_name: 'thedonuil', count:5 }, function (err,data,response) {
+T.get('direct_messages/sent',{ count:5 }, function (err,data,response) {
   data.forEach(element => {
       let dm = new Dm(element.recipient.screen_name,element.recipient.profile_image_url, element.text)
     finalDm.push(dm);
@@ -69,13 +70,15 @@ T.get('direct_messages/sent',{ screen_name: 'thedonuil', count:5 }, function (er
 
 
 
-T.get('users/show',{ screen_name: 'thedonuil' }, function (err,data,response) {
+T.get('account/verify_credentials', function (err,data,response) {
+  
  let name = data.screen_name;
  let image = data.profile_image_url;
  let profile = new Profile(name,image);
  finalProfile.push(profile);
  return finalProfile;
   })
+
 
 module.exports.finalFriends = finalFriends; 
 module.exports.finalTimeline = finalTimeline;
